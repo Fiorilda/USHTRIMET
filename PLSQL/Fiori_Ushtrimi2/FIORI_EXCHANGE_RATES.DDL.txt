@@ -1,0 +1,8 @@
+create table FIORI_EXCHANGE_RATES
+(
+  currency_from VARCHAR2(30) not null,
+  currency_to   VARCHAR2(30) not null,
+  exchangerate  FLOAT,
+  date1         DATE,
+  primary key (CURRENCY_FROM, CURRENCY_TO)
+);
