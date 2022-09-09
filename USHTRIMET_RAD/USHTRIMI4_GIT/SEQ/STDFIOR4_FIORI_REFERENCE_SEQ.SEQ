@@ -1,0 +1,6 @@
+CREATE SEQUENCE STDFIOR4_FIORI_REFERENCE_SEQ
+start with 1
+increment by 1
+minvalue 1
+maxvalue 1000000000
+cycle;
