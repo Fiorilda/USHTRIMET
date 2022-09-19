@@ -54,8 +54,6 @@ public class AccountService1 implements AccountService {
         }
     }
 
-
-
     @Override
     public Account getAccountById(long accountId) {
         Optional<Account> accountDb = this.accountRepository.findById(accountId);

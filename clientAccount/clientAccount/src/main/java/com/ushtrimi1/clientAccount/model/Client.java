@@ -1,16 +1,10 @@
 package com.ushtrimi1.clientAccount.model;
-
-import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
-
 
 @Entity
 @Table(name = "clients")
 public class Client {
-
     @Id
     private long id;
 
@@ -35,9 +29,6 @@ public class Client {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
-    }
     public String getName() {
         return name;
     }
@@ -68,6 +59,9 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
 }

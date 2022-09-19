@@ -1,11 +1,7 @@
 package com.ushtrimi1.clientAccount.model;
-
 import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @Entity(name = "accounts")
 public class Account {
@@ -30,8 +26,6 @@ public class Account {
 
     @CreationTimestamp
     private Date updatedAt;
-
-
 
     public Account(){
 
@@ -80,7 +74,6 @@ public class Account {
     public void setBranchCode(String branchCode) {
         this.branchCode = branchCode;
     }
-
 
     public void setClientId(long clientId) {
         this.clientId = clientId;
