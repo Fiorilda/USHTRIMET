@@ -5,6 +5,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
+
+
+//this is a comment
 @Entity
 @Table(name = "clients")
 public class Client {
