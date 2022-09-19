@@ -61,7 +61,7 @@ public class Account {
         return updatedAt;
     }
 
-    public long getClient_id() {
+    public long getClientId() {
         return clientId;
     }
 
