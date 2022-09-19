@@ -20,10 +20,10 @@ public class Account {
     private double amount;
 
     @Column(name = "branch_code")
-    private String branch_code;
+    private String branchCode;
 
     @Column(name="client_id")
-    private long client_id;
+    private long clientId;
 
     @CreationTimestamp
     private Date createdAt;
@@ -49,8 +49,8 @@ public class Account {
         return currency;
     }
 
-    public String getBranch_code() {
-        return branch_code;
+    public String getBranchCode() {
+        return branchCode;
     }
 
     public Date getCreatedAt() {
@@ -61,8 +61,12 @@ public class Account {
         return updatedAt;
     }
 
+    public long getClient_id() {
+        return clientId;
+    }
+
     public void setAccountId(long accountId) {
-        accountId = accountId;
+       this.accountId = accountId;
     }
 
     public void setCurrency(String currency) {
@@ -73,16 +77,13 @@ public class Account {
         this.amount = amount;
     }
 
-    public void setBranch_code(String branch_code) {
-        this.branch_code = branch_code;
+    public void setBranchCode(String branchCode) {
+        this.branchCode = branchCode;
     }
 
-    public long getClient_id() {
-        return client_id;
-    }
 
-    public void setClient_id(long client_id) {
-        this.client_id = client_id;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     public void setCreatedAt(Date createdAt) {

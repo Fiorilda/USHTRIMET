@@ -33,10 +33,28 @@ public class AccountService1 implements AccountService {
         return accountRepository.findById(accountId).map(account -> {
             account.setCurrency(accountRequest.getCurrency());
             account.setAmount(accountRequest.getAmount());
-            account.setBranch_code(accountRequest.getBranch_code());
+            account.setBranchCode(accountRequest.getBranchCode());
             return accountRepository.save(account);
         }).orElseThrow(() -> new ResourceNotFoundException("accountId " + accountId + "not found"));
     }
+
+    @Override
+    public Account updateAccount(Account account) {
+        Optional<Account> clientDb = this.accountRepository.findById(account.getAccountId());
+
+        if(clientDb.isPresent()) {
+            Account clientUpdate = clientDb.get();
+            clientUpdate.setCurrency(account.getCurrency());
+            clientUpdate.setAmount(account.getAmount());
+            clientUpdate.setBranchCode(account.getBranchCode());
+            accountRepository.save(clientUpdate);
+            return clientUpdate;
+        }else {
+            throw new ResourceNotFoundException("Record not found with id : " + account.getAccountId());
+        }
+    }
+
+
 
     @Override
     public Account getAccountById(long accountId) {

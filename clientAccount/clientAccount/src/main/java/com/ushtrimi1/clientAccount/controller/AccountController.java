@@ -20,6 +20,12 @@ public class AccountController {
         return ResponseEntity.ok().body(this.accountService.updateAccount(accountRequest,clientId,accountId));
     }
 
+    @PutMapping("/accounts/{id}")
+    public ResponseEntity<Account> updateAccount(@PathVariable long id, @RequestBody Account account){
+        account.setAccountId(id);
+        return ResponseEntity.ok().body(this.accountService.updateAccount(account));
+    }
+
     @GetMapping("/accounts")
     public ResponseEntity<List<Account>> getAllAccounts(){
         return ResponseEntity.ok().body(accountService.getAllAccounts());

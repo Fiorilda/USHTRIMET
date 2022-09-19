@@ -7,8 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 
-
-//this is a comment
 @Entity
 @Table(name = "clients")
 public class Client {

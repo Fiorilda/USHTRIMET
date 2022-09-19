@@ -13,4 +13,5 @@ public interface AccountService {
     Account getAccountById(long accountId);
     void deleteAccount(long accountId);
     Account updateAccount(Account account,long clientId, long accountId);
+    Account updateAccount(Account account);
 }
