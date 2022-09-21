@@ -1,0 +1,64 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+
+<oj-form-layout
+        id="formLayoutOptions"
+        max-columns="1"
+        direction="row"
+        user-assistance-density="efficient"
+>
+
+    <oj-input-text
+          :id='[[inputFirstNameId]]'
+          value="{{inputFirstNameValue}}"
+          label-hint="[[inputFirstNameLabel]]"
+          label-edge="inside">
+    </oj-input-text>
+
+    <oj-input-text
+          :id='[[inputLastNameId]]'
+          value="{{inputLastNameValue}}"
+          label-hint="[[inputLastNameLabel]]"
+          label-edge="inside">
+    </oj-input-text>
+
+    <oj-input-date
+          id="date-id"
+          value="{{inputBirthDateValue}}"
+          label-hint="[[inputBirthDateLabel]]"
+          label-edge="inside">
+    </oj-input-date>
+
+    <oj-select-single
+              id="'gender-id'"
+              value="{{inputGenderValue}}"
+              label-hint="[[inputGenderLabel]]"
+              label-edge="inside"
+              
+              data="[[browsersDP]]"
+              >
+    </oj-select-single>
+
+    <oj-input-text
+          id='birth-place-id'
+          value="{{inputBirthPlaceValue}}"
+          label-hint="[[inputBirthPlaceLabel]]"
+          label-edge="inside">
+    </oj-input-text>
+
+    <oj-input-number
+          id="age-id"
+          value="{{inputAgeValue}}"
+          label-hint="[[inputAgeLabel]]"
+          min="1"
+          max="100"
+          step="0">
+    </oj-input-number>
+
+
+</oj-form-layout>
+
+
