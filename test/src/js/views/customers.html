@@ -71,7 +71,7 @@
       </div>
 </span>
 
-
+<h5>Client Table:</h5>
 <oj-table
 id="table"
 aria-label="Client Table"
@@ -86,3 +86,21 @@ columns='[{"headerText": "Name", "field": "Name", "id": "Name"},
           {"headerText": "Age", "field": "Age", "id": "Age"}
           ]'
 ></oj-table>
+
+
+<div id="chart-container">
+      <oj-chart
+        id="pieChart"
+        type="pie"
+        data="[[dataProvider1]]"
+        animation-on-display="auto"
+        animation-on-data-change="auto"
+        hover-behavior="dim">
+        <template slot="itemTemplate" data-oj-as="item">
+            <oj-chart-item
+                  value="[[item.data.value]]"
+                  group-id="[[ [item.data.group] ]]"
+                  series-id="[[item.data.series]]">
+            </oj-chart-item>
+        </template>
+      </oj-chart>
