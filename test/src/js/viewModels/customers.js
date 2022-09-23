@@ -12,6 +12,7 @@ define([
         "knockout",
         "utils/Core",
         "ojs/ojarraydataprovider",
+        "ojs/ojbufferingdataprovider",
         "ojs/ojinputtext",
         "ojs/ojformlayout",
         "ojs/ojinputnumber",
@@ -19,9 +20,8 @@ define([
         "ojs/ojselectsingle",
         "ojs/ojbutton",
         "ojs/ojtable",
-        "ojs/ojbufferingdataprovider"
+        
       ],
-
  function(
     ko,
     CoreUtils,
@@ -33,28 +33,21 @@ define([
       this._initAllIds();
       this._initAllLabels();
       this._initAllObservables();
-     // this._initVariables();
     };
 
-    var dept=[];
-    
     CustomerViewModel.prototype._initAllObservables=function (){
       this.inputFirstNameValue=ko.observable(null);
       this.inputLastNameValue=ko.observable(null);
       this.inputAgeValue=ko.observable(null);
       this.inputBirthPlaceValue=ko.observable(null);
       this.inputBirthDateValue=ko.observable(null);
-      this.inputBirthPlaceValue=ko.observable(null);
       this.inputGenderValue=ko.observable(null);
-
-      this.dataprovider = new BufferingDataProvider( new ArrayDataProvider(dept, {
-        keyAttributes: "departmentId",
+      
+     this.deptArray = JSON.parse(null);
+              this.deptObservableArray = ko.observableArray(this.deptArray);
+              this.dataprovider = new BufferingDataProvider(new ArrayDataProvider(this.deptObservableArray, {
+                  keyAttributes: 'Name'
       }));
-
-  //   this.dataprovider = new BufferingDataProvider(new ArrayDataProvider(this.deptObservableArray, {
-  //     keyAttributes: 'DepartmentId'
-  // }));
-
 
       //Data Provider
       this.inputGenderDataProvider=ko.observable( new ArrayDataProvider([
@@ -67,64 +60,27 @@ define([
           label:"Male"  
         },
       ], {
-          keyAttributes: "value",
+          keyAttributes: "label",
       }));
-      
 
-     // this.onSaveButtonClick=this._onSaveButtonClick.bind(this);
+      this.onSaveButtonClick=this._onSaveButtonClick.bind(this);
+ };
 
-      this.onSaveButtonClick = () => {
-            const dept = {
-                DepartmentId: "nmgjk",
-                DepartmentName: "hjbfv",
-                LocationId: "hjbfv",
-                ManagerId: "hjbfv"
-            };
-            this.dataprovider.addItem({
-                metadata: { key: dept.DepartmentId },
-                data: dept
-            }); 
+    CustomerViewModel.prototype._onSaveButtonClick=function (){
+      const ClientData = {
+        Name: this.inputFirstNameValue(),
+        LastName: this.inputLastNameValue(),
+        Birthday: this.inputBirthDateValue(),
+        Gender: this.inputGenderValue(),
+        Birthplace:this.inputBirthPlaceValue(),
+        Age:this.inputAgeValue()
       };
-       //data="[[dataprovider]]"
-  
-      // var array=[
-      //             {emer:this.inputFirstNameValue=ko.observable(null),mbiemer:"bla",datelindje:"34",mosha:34},
-      //             {emer:"fiori",mbiemer:"bla",datelindje:"34",mosha:34}
-      //           ];
-
-
-      
-
-      // this.dataprovider=ko.observable( new ArrayDataProvider([
-
-      //   {emer:"bushi",mbiemer:"bla",datelindje:"34",mosha:34},
-      //   {emer:"fiori",mbiemer:"bla",datelindje:"34",mosha:34}
-
-      // ], {
-      //     keyAttributes: "value",
-      // }));
-
-    };
-
-
-
-    // CustomerViewModel.prototype._initVariables= function (){
-    //  // this.inputBirthdayMinValue=
-    //  // this.inputBirthdayMaxValue=
-    // }
-      
-  //   CustomerViewModel.prototype._onSaveButtonClick=function (){
-  //     this.dataprovider=ko.observable( new ArrayDataProvider([
-
-  //       {emer:"bushi",mbiemer:"bla",datelindje:"34",mosha:34},
-  //       {emer:"fiori",mbiemer:"bla",datelindje:"34",mosha:34}
-
-  //     ], {
-  //         keyAttributes: "value",
-  //     }));
-  //     alert("vfhbvgfkbvg")
+      this.dataprovider.addItem({
+        metadata: { key: ClientData.Name},  
+        data:ClientData
+      });
      
-  //  };
+    };
 
     CustomerViewModel.prototype._initAllIds=function (){
        this.inputFirstNameId=CoreUtils.generateUniqueId();
@@ -135,13 +91,14 @@ define([
       this.inputFirstNameLabel="First Name";
       this.inputLastNameLabel="Last Name";
       this.inputAgeLabel="Age";
-      this.inputBirthPlaceLabel="Birth Place";
+      this.inputBirthPlaceLabel="BirthPlace";
       this.inputBirthDateLabel="BirthDay";
       this.inputGenderLabel="Gender";
     }
-
 
     return CustomerViewModel;
 
   }
 );
+
+

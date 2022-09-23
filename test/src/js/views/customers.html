@@ -72,43 +72,17 @@
 </span>
 
 
-
-<!-- <oj-table id="table" aria-label='Tabele klienti'
-      data='[[dataprovider]]'
-      selection-mode='{"row": "multiple", "column": "multiple"}'
-      dnd='{"reorder": {"columns": "enabled"}}'
-      scroll-policy='loadMoreOnScroll'
-      scroll-policy-options='{"fetchSize": 10}'
-      columns='[{"headerText": "Emer", 
-                  "field": "emer",
-                  "headerClassName": "oj-sm-only-hide",
-                  "className": "oj-sm-only-hide",
-                  "resizable": "enabled"},
-                  {"headerText": "Mbiemer", 
-                  "field": "mbiemer",
-                  "resizable": "enabled"},
-                  {"headerText": "Datelindje", 
-                  "field": "datelindje",
-                  "headerClassName": "oj-sm-only-hide",
-                  "className": "oj-sm-only-hide",
-                  "resizable": "enabled"},
-                  {"headerText": "Mosha", 
-                  "field": "mosha",
-                  "resizable": "enabled"}]'
-style="width: 100%;">
-</oj-table> -->
-
-
 <oj-table
 id="table"
-aria-label="Departments Table"
+aria-label="Client Table"
 accessibility.row-header="depName"
 class="demo-table-container oj-helper-text-align-center"
-
-columns='[{"headerText": "Department Id", "field": "DepartmentId", "id": "depId"},
-          {"headerText": "Department Name", "field": "DepartmentName", "id": "depName"},
-          {"headerText": "Location Id", "field": "LocationId", "id": "locId"},
-          {"headerText": "Manager Id", "field": "ManagerId", "id": "manId"}]'
-selection-mode.row="single"
-first-selected-row="{{firstSelected}}"
-on-first-selected-row-changed="[[firstSelectedRowChangedListener]]"></oj-table>
+data="[[dataprovider]]"
+columns='[{"headerText": "Name", "field": "Name", "id": "Name"},
+          {"headerText": "LastName", "field": "LastName", "id": "LastName"},
+          {"headerText": "Birthday", "field": "Birthday", "id": "Birthday"},
+          {"headerText": "Gender", "field": "Gender", "id": "Gender"},
+          {"headerText": "BirthPlace", "field": "Birthplace", "id": "Birthplace"},  
+          {"headerText": "Age", "field": "Age", "id": "Age"}
+          ]'
+></oj-table>
