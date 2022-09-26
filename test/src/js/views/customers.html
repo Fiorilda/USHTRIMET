@@ -4,103 +4,104 @@
  as shown at https://oss.oracle.com/licenses/upl/
  -->
 
-<oj-form-layout
-        id="formLayoutOptions"
-        max-columns="1"
-        direction="row"
-        user-assistance-density="efficient">
+ <oj-form-layout
+ id="formLayoutOptions"
+ max-columns="1"
+ direction="row"
+ user-assistance-density="efficient">
 
-    <oj-input-text
-      required
-          :id='[[inputFirstNameId]]'
-          value="{{inputFirstNameValue}}"
-          label-hint="[[inputFirstNameLabel]]"
-          length.max="35" length.count-by="codeUnit"
-          label-edge="inside">
-    </oj-input-text>
+<oj-input-text
+   required
+   :id='[[inputFirstNameId]]'
+   value="{{inputFirstNameValue}}"
+   label-hint="[[inputFirstNameLabel]]"
+   validators="[[inputFirstNameValidators]]"
+   on-raw-value-changed="[[onInputFirstNameRawValueChange]]"
+   label-edge="inside">
+</oj-input-text>
 
-    <oj-input-text
-          :id='[[inputLastNameId]]'
-          value="{{inputLastNameValue}}"
-          label-hint="[[inputLastNameLabel]]"
-          length.max="35" length.count-by="codeUnit"
-          label-edge="inside">
-    </oj-input-text>
+<oj-input-text
+   :id='[[inputLastNameId]]'
+   value="{{inputLastNameValue}}"
+   label-hint="[[inputLastNameLabel]]"
+   readonly="[[isInputLastNameDisable]]"
+   length.max="35" length.count-by="codeUnit"
+   label-edge="inside">
+</oj-input-text>
 
-    <oj-input-date
-          id="date-id"
-          value="{{inputBirthDateValue}}"
-        
-          label-hint="[[inputBirthDateLabel]]"
-          label-edge="inside">
-    </oj-input-date>
+<oj-input-date
+   id="date-id"
+   value="{{inputBirthDateValue}}"
+   max="[[inputBirthdayMaxValue]]"
+   label-hint="[[inputBirthDateLabel]]"
+   label-edge="inside">
+</oj-input-date>
 
-    <oj-select-single
-              id="'gender-id'"
-              value="{{inputGenderValue}}"
-              label-hint="[[inputGenderLabel]]"
-              label-edge="inside"
-              data="[[inputGenderDataProvider]]">
-    </oj-select-single>
+<oj-select-single
+       id="'gender-id'"
+       value="{{inputGenderValue}}"
+       label-hint="[[inputGenderLabel]]"
+       label-edge="inside"
+       data="[[inputGenderDataProvider]]">
+</oj-select-single>
 
-    <oj-input-text
-          id='birth-place-id'
-          value="{{inputBirthPlaceValue}}"
-          label-hint="[[inputBirthPlaceLabel]]"
-          label-edge="inside">
-    </oj-input-text>
+<oj-input-text
+   id='birth-place-id'
+   value="{{inputBirthPlaceValue}}"
+   label-hint="[[inputBirthPlaceLabel]]"
+   label-edge="inside">
+</oj-input-text>
 
-    <oj-input-number
-          id="age-id"
-          value="{{inputAgeValue}}"
-          label-hint="[[inputAgeLabel]]"
-          min="1"
-          max="100"
-          step="0">
-    </oj-input-number>    
+<oj-input-number
+   id="age-id"
+   value="{{inputAgeValue}}"
+   label-hint="[[inputAgeLabel]]"
+   min="1"
+   max="100"
+   step="0">
+</oj-input-number>    
 </oj-form-layout>
 
 
 <span>
-      <div class="oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center">
-            <div class="oj-flex-item oj-sm-padding-2x-horizontal">
-                  <oj-button  chroming="callToAction" id="save-button-id" on-oj-action="[[onSaveButtonClick]]">
-                        SAVE
-                  </oj-button>
-            </div>
-      </div>
+<div class="oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center">
+     <div class="oj-flex-item oj-sm-padding-2x-horizontal">
+           <oj-button  chroming="callToAction" id="save-button-id" on-oj-action="[[onSaveButtonClick]]">
+                 SAVE
+           </oj-button>
+     </div>
+</div>
 </span>
 
 <h5>Client Table:</h5>
 <oj-table
-id="table"
-aria-label="Client Table"
-accessibility.row-header="depName"
-class="demo-table-container oj-helper-text-align-center"
-data="[[dataprovider]]"
-columns='[{"headerText": "Name", "field": "Name", "id": "Name"},
-          {"headerText": "LastName", "field": "LastName", "id": "LastName"},
-          {"headerText": "Birthday", "field": "Birthday", "id": "Birthday"},
-          {"headerText": "Gender", "field": "Gender", "id": "Gender"},
-          {"headerText": "BirthPlace", "field": "Birthplace", "id": "Birthplace"},  
-          {"headerText": "Age", "field": "Age", "id": "Age"}
-          ]'
-></oj-table>
-
+  id="table"
+  aria-label="Client Table"
+  accessibility.row-header="depName"
+  class="demo-table-container oj-helper-text-align-center"
+  data="[[dataprovider]]"
+  columns='[{"headerText": "Name", "field": "Name", "id": "Name"},
+    {"headerText": "LastName", "field": "LastName", "id": "LastName"},
+    {"headerText": "Birthday", "field": "Birthday", "id": "Birthday"},
+    {"headerText": "Gender", "field": "Gender", "id": "Gender"},
+    {"headerText": "BirthPlace", "field": "Birthplace", "id": "Birthplace"},  
+    {"headerText": "Age", "field": "Age", "id": "Age"}
+    ]'>
+ </oj-table>
 
 <div id="chart-container">
-      <oj-chart
-        id="pieChart"
-        type="pie"
-        data="[[dataProvider1]]"
-        animation-on-display="auto"
-        animation-on-data-change="auto"
-        hover-behavior="dim">
-        <template slot="itemTemplate" data-oj-as="item">
-            <oj-chart-item
-                  value="[[item.data.value]]"
-                  group-id="[[ [item.data.group] ]]"
-                  series-id="[[item.data.series]]">
-            </oj-chart-item>
-        </template>
-      </oj-chart>
+<oj-chart
+  id="pieChart"
+  type="pie"
+  data="[[dataProvider1]]"
+  animation-on-display="auto"
+  animation-on-data-change="auto"
+  hover-behavior="dim">
+  <template slot="itemTemplate" data-oj-as="item">
+      <oj-chart-item
+            value="[[item.data.value]]"
+            group-id="[[ [item.data.group] ]]"
+            series-id="[[item.data.series]]">
+      </oj-chart-item>
+  </template>
+</oj-chart>
